@@ -1,6 +1,7 @@
 USE db_project;
 
-DROP TABLE authors
+DROP TABLE weapons;
+DROP TABLE authors;
 DROP TABLE climate;
 DROP TABLE population_characteristics;
 DROP TABLE wars;

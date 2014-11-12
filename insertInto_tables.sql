@@ -21,5 +21,9 @@ INSERT INTO climate (country, biome, num_seasons, min_temp, max_temp, avg_precip
 VALUES ('germany', 'warm temperate', 4, -50, 104, 700, 'temperate evergreen forest');
 
 #insert into authors table
-INSERT INTO authors (name, country, most_popular_book, birthday)
-VALUES ('fritz stern', 'germany', 'our century', 'february 2, 1926');
+INSERT INTO authors (name, country_born_in, city_born_in, most_popular_book, birthday)
+VALUES ('fritz stern', 'germany', 'wroclaw', 'our century', 'february 2, 1926');
+
+#insert into weapons table
+INSERT INTO weapons (primary_rifle, caliber, country, war_first_used, designer, still_used)
+VALUES ('gewehr 88', '7.92x57mm', 'germany', 'ww1', 'german rifle commission', 'no');

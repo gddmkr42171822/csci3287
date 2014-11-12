@@ -79,12 +79,39 @@ MVD:
 CREATE TABLE authors
 (
   name varchar(255) NOT NULL,
-  country varchar(255),
+  country_born_in varchar(255),
+  city_born_in varchar(255),
   most_popular_book varchar(255),
   birthday varchar(255),
   death varchar(255) DEFAULT NULL,
   how_died text DEFAULT NULL,
   PRIMARY KEY(name),
+  FOREIGN KEY(country_born_in) REFERENCES countries(name),
+  FOREIGN KEY(country_born_in) REFERENCES population_characteristics(country)
+);
+
+/*authors table
+----------------
+TFD: name -> city_born_in, city_born_in does not -> name, city_born_in -> country_born_in
+MVD:
+*/
+
+CREATE TABLE weapons
+(
+  primary_rifle varchar(255) NOT NULL,
+  caliber varchar(255),
+  country varchar(255),
+  war_first_used varchar(255),
+  designer varchar(255),
+  still_used varchar(255),
+  PRIMARY KEY(primary_rifle),
+  FOREIGN KEY(war_first_used) REFERENCES wars(war_name),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(country) REFERENCES population_characteristics(country)
 );
+
+/*weapons table
+----------------
+TFD: country -> main_weapon, main_weaon does not -> country, main_weapon -> still_used
+MVD:
+*/
