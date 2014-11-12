@@ -18,4 +18,8 @@ VALUES ('ww1', '1914', 'europe', 37000000, 'assasination of Archduke', 'germany'
 
 #insert into climate table
 INSERT INTO climate (country, biome, num_seasons, min_temp, max_temp, avg_precipitation, vegetation)
-VALUES ('germany', 'warm temperate', 4, -50, 104, 700, 'temperatre evergreen forest');
+VALUES ('germany', 'warm temperate', 4, -50, 104, 700, 'temperate evergreen forest');
+
+#insert into authors table
+INSERT INTO authors (name, country, most_popular_book, birthday)
+VALUES ('fritz stern', 'germany', 'our century', 'february 2, 1926');

@@ -66,7 +66,8 @@ CREATE TABLE climate
   avg_precipitation smallint,
   vegetation text,
   PRIMARY KEY(country),
-  FOREIGN KEY(country) REFERENCES countries(name)
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country)
 );
 
 /*climate table
@@ -75,9 +76,15 @@ TFD: country -> biome, biome does not -> country, biome -> vegetation
 MVD:
 */
 
-/*
-CREATE TABLE terrain
+CREATE TABLE authors
 (
-  num_mountains tinyint,
+  name varchar(255) NOT NULL,
+  country varchar(255),
+  most_popular_book varchar(255),
+  birthday varchar(255),
+  death varchar(255) DEFAULT NULL,
+  how_died text DEFAULT NULL,
+  PRIMARY KEY(name),
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country)
 );
-*/
