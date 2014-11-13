@@ -67,7 +67,6 @@ CREATE TABLE climate
   vegetation text,
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country)
 );
 
 /*climate table
@@ -87,7 +86,6 @@ CREATE TABLE authors
   how_died text DEFAULT NULL,
   PRIMARY KEY(name),
   FOREIGN KEY(country_born_in) REFERENCES countries(name),
-  FOREIGN KEY(country_born_in) REFERENCES population_characteristics(country)
 );
 
 /*authors table
@@ -107,7 +105,6 @@ CREATE TABLE weapons
   PRIMARY KEY(primary_rifle),
   FOREIGN KEY(war_first_used) REFERENCES wars(war_name),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country)
 );
 
 /*weapons table
@@ -126,7 +123,6 @@ CREATE TABLE military
   most_recent_war_end varchar(255),
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country),
   FOREIGN KEY(most_recent_war) REFERENCES wars(war_name)
 );
 
@@ -147,8 +143,6 @@ CREATE TABLE government
   do_they_vote varchar(255),
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country),
-  FOREIGN KEY(country) REFERENCES military(country)
 );
 
 /*government table
@@ -167,9 +161,6 @@ CREATE TABLE food
   obesity_rate varchar(255),
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country),
-  FOREIGN KEY(country) REFERENCES military(country),
-  FOREIGN KEY(country) REFERENCES government(country)
 );
 
 /*food table
@@ -188,10 +179,6 @@ CREATE TABLE disease
   num_people_with_hiv int,
   PRIMARY KEY (country),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(country) REFERENCES population_characteristics(country),
-  FOREIGN KEY(country) REFERENCES military(country),
-  FOREIGN KEY(country) REFERENCES government(country),
-  FOREIGN KEY(country) REFERENCES food(country)
 );
 
 /*disease table
