@@ -27,3 +27,19 @@ VALUES ('fritz stern', 'germany', 'wroclaw', 'our century', 'february 2, 1926');
 #insert into weapons table
 INSERT INTO weapons (primary_rifle, caliber, country, war_first_used, designer, still_used)
 VALUES ('gewehr 88', '7.92x57mm', 'germany', 'ww1', 'german rifle commission', 'no');
+
+#insert into military table
+INSERT INTO military (country, size_of, most_recent_war, num_branches, mandatory_service, most_recent_war_end)
+VALUES ('germany', 183000, afghanistan, 3, 'yes', NULL);
+
+#insert into government table
+INSERT INTO government (country, type_of, head_leader, head_political_party, name_of_constitution, name_of_legislative_power, do_they_vote)
+VALUES ('germany', 'federal parliamentary republic', 'angela merkel', 'christian democratic union', 'grundgesetz', 'bundestag', 'yes');
+
+#insert into food table
+INSERT INTO food (country, most_famous_food, most_famous_drink, most_famous_dessert, obesity_rate)
+VALUES ('germany', 'aachener printen', 'kaffe', 'black forest cake', 'jagermeister', '25%');
+
+#insert into disease table
+INSERT INTO disease (country, main_disease, life_expectancy_males, num_deaths_from_main_disease, num_smokers, num_people_with_hiv)
+VALUES ('germany', 'coronary heart disease', 78, 155761, '30%', 53000);

@@ -1,5 +1,9 @@
 USE db_project;
 
+DROP TABLE disease;
+DROP TABLE food;
+DROP TABLE government;
+DROP TABLE military;
 DROP TABLE weapons;
 DROP TABLE authors;
 DROP TABLE climate;

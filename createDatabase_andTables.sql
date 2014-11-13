@@ -41,11 +41,11 @@ MVD:
 CREATE TABLE wars
 (
   war_name varchar(255) NOT NULL,
-  year_began smallint,
+  year_began smallint DEFAULT NULL,
   continent varchar(255),
   casualties int,
   reason_began text,
-  main_loser varchar(255),
+  main_loser varchar(255) DEFAULT NULL,
   PRIMARY KEY(war_name),
   FOREIGN KEY(main_loser) REFERENCES countries(name)
 );
@@ -112,6 +112,90 @@ CREATE TABLE weapons
 
 /*weapons table
 ----------------
-TFD: country -> main_weapon, main_weaon does not -> country, main_weapon -> still_used
+TFD: country -> main_weapon, main_weapon does not -> country, main_weapon -> still_used
+MVD:
+*/
+
+CREATE TABLE military
+(
+  country varchar(255) NOT NULL,
+  size_of int,
+  most_recent_war varchar(255) DEFAULT NULL,
+  num_branches tinyint,
+  mandatory_service varchar(255),
+  most_recent_war_end varchar(255),
+  PRIMARY KEY(country),
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country),
+  FOREIGN KEY(most_recent_war) REFERENCES wars(war_name)
+);
+
+/*military table
+------------------
+TFD: country -> most_recent_war, most_recent_war does ont -> country, most_recent_war -> most_recent_war_end
+MVD:
+*/
+
+CREATE TABLE government
+(
+  country varchar(255) NOT NULL,
+  type_of varchar(255),
+  head_leader varchar(255),
+  head_political_party varchar(255),
+  name_of_constitution varchar(255),
+  name_of_legislative_power varchar(255),
+  do_they_vote varchar(255),
+  PRIMARY KEY(country),
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country),
+  FOREIGN KEY(country) REFERENCES military(country)
+);
+
+/*government table
+------------------
+TFD: country -> type_of, type_of does not -> country, type_of -> do_they_vote
+MVD:
+*/
+
+CREATE TABLE food
+(
+  country varchar(255) NOT NULL,
+  popular_food varchar(255),
+  popular_drink varchar(255),
+  popular_dessert varchar(255),
+  popular_alcoholic_beverage varchar(255),
+  obesity_rate varchar(255),
+  PRIMARY KEY(country),
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country),
+  FOREIGN KEY(country) REFERENCES military(country),
+  FOREIGN KEY(country) REFERENCES government(country)
+);
+
+/*food table
+-------------
+TFD:
+MVD:
+*/
+
+CREATE TABLE disease
+(
+  country varchar(255) NOT NULL,
+  main_disease varchar(255),
+  life_expectancy_males tinyint,
+  num_deaths_from_main_disease int,
+  num_smokers varchar(255),
+  num_people_with_hiv int,
+  PRIMARY KEY (country),
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES population_characteristics(country),
+  FOREIGN KEY(country) REFERENCES military(country),
+  FOREIGN KEY(country) REFERENCES government(country),
+  FOREIGN KEY(country) REFERENCES food(country)
+);
+
+/*disease table
+---------------
+TFD:
 MVD:
 */
