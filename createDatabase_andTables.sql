@@ -9,13 +9,14 @@ CREATE TABLE countries
   size_of_population bigint,
   continent varchar(255),
   capitol varchar(255),
+  east_west_dichotomy varchar(255),
   PRIMARY KEY (name)
 );
 
 /*
 countries table
 -----------------
-TFD: name -> main_language, main_language does not -> name, main_language -> nationality
+TFD: name -> continent, continent does not -> name, continent -> cardinal_reference
 MVD:
 */
 
@@ -23,6 +24,7 @@ CREATE TABLE population_characteristics
 (
   country varchar(255) NOT NULL,
   main_religion varchar(255),
+  religious_leader varchar(255),
   average_income bigint,
   unemployment_rate float(9, 2),
   mortality_rate float(9, 2),
@@ -34,7 +36,7 @@ CREATE TABLE population_characteristics
 /*
 population_characteristics table
 ---------------------------------
-TFD: country -> unemployment_rate, unemployment_rate does not -> country, unemployment_rate -> fertility rate
+TFD: country -> main_religion, main_religion does not -> country, main_religion -> religious_leader
 MVD:
 */
 
@@ -45,14 +47,15 @@ CREATE TABLE wars
   continent varchar(255),
   casualties int,
   reason_began text,
-  main_loser varchar(255) DEFAULT NULL,
+  main_loser_by_deaths varchar(255) DEFAULT NULL,
+  century varchar(255),
   PRIMARY KEY(war_name),
   FOREIGN KEY(main_loser) REFERENCES countries(name)
 );
 
 /*wars table
 --------------
-TFD: reason_began -> year_began, year_began does not -> reason_began, year_began -> main_loser
+TFD: reason_began -> year_began, year_began does not -> reason_began, year_began -> century
 MVD:
 */
 
@@ -66,7 +69,7 @@ CREATE TABLE climate
   avg_precipitation smallint,
   vegetation text,
   PRIMARY KEY(country),
-  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*climate table
@@ -85,7 +88,7 @@ CREATE TABLE authors
   death varchar(255) DEFAULT NULL,
   how_died text DEFAULT NULL,
   PRIMARY KEY(name),
-  FOREIGN KEY(country_born_in) REFERENCES countries(name),
+  FOREIGN KEY(country_born_in) REFERENCES countries(name)
 );
 
 /*authors table
@@ -101,10 +104,10 @@ CREATE TABLE weapons
   country varchar(255),
   war_first_used varchar(255),
   designer varchar(255),
-  still_used varchar(255),
+  still_used boolean,
   PRIMARY KEY(primary_rifle),
   FOREIGN KEY(war_first_used) REFERENCES wars(war_name),
-  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*weapons table
@@ -140,9 +143,9 @@ CREATE TABLE government
   head_political_party varchar(255),
   name_of_constitution varchar(255),
   name_of_legislative_power varchar(255),
-  do_they_vote varchar(255),
+  do_they_vote boolean,
   PRIMARY KEY(country),
-  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*government table
@@ -160,7 +163,7 @@ CREATE TABLE food
   popular_alcoholic_beverage varchar(255),
   obesity_rate varchar(255),
   PRIMARY KEY(country),
-  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*food table
@@ -178,7 +181,7 @@ CREATE TABLE disease
   num_smokers varchar(255),
   num_people_with_hiv int,
   PRIMARY KEY (country),
-  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*disease table
