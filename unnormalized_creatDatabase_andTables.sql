@@ -47,8 +47,7 @@ CREATE TABLE wars
   reason_began text,
   main_loser_by_deaths varchar(255) DEFAULT NULL,
   century varchar(255),
-  PRIMARY KEY(war_name),
-  FOREIGN KEY(main_loser) REFERENCES countries(name)
+  PRIMARY KEY(war_name)
 );
 
 /*wars table
@@ -119,8 +118,7 @@ CREATE TABLE military
   mandatory_service varchar(255),
   most_recent_war_end varchar(255),
   PRIMARY KEY(country),
-  FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(most_recent_war) REFERENCES wars(war_name)
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 /*military table
@@ -153,7 +151,7 @@ CREATE TABLE food
   popular_drink varchar(255),
   popular_dessert varchar(255),
   popular_alcoholic_beverage varchar(255),
-  popular_alcohlic_beverage_type varchar(255),
+  popular_alcoholic_beverage_type varchar(255),
   obesity_rate varchar(255),
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name)
@@ -185,15 +183,16 @@ TFD: country -> main_disease, main_disease does not -> country, main_disease -> 
 
 CREATE TABLE flag
 (
+  id int NOT NULL AUTO_INCREMENT,
   country varchar(255) NOT NULL,
   cause_of_flag_creation text,
   date_flag_created varchar(255),
   century_flag_created varchar(255),
   flag_colors varchar(255),
   flag_sizes varchar(255),
-  PRIMARY KEY (country),
+  PRIMARY KEY (id),
   FOREIGN KEY(country) REFERENCES countries(name)
-)
+);
 
 /*
 flag table
