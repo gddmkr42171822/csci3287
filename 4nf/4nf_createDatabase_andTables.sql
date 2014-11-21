@@ -190,7 +190,7 @@ CREATE TABLE disease
   FOREIGN KEY(main_disease) REFERENCES most_deadly_diseases(main_disease)
 );
 
-CREATE TABLE most_deadly_diseases
+CREATE TABLE most_deadly_disease_in_country
 (
   main_disease varchar(255) NOT NULL,
   main_disease_type varchar(255),
@@ -206,22 +206,23 @@ CREATE TABLE flag_day
 
 CREATE TABLE flag_colors
 (
+  cause_of_flag_creation text NOT NULL,
   country varchar(255) NOT NULL,
-  cause_of_flag_creation text,
   date_flag_created varchar(255),
   flag_colors varchar(255),
-  PRIMARY KEY(country),
+  PRIMARY KEY(cause_of_flag_creation),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(date_flag_created) REFERENCES flag_day(date_flag_created)
 );
 
 CREATE TABLE flag_sizes
 (
+  cause_of_flag_creation text NOT NULL,
   country varchar(255) NOT NULL,
-  cause_of_flag_creation text,
   date_flag_created varchar(255),
   flag_sizes varchar(255),
-  PRIMARY KEY(country),
+  PRIMARY KEY(cause_of_flag_creation),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(date_flag_created) REFERENCES flag_day(date_flag_created)
+  FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_colors(cause_of_flag_creation)
 );
