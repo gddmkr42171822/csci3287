@@ -106,7 +106,7 @@ CREATE TABLE weapons
 
 /*weapons table
 ----------------
-TFD: country -> main_weapon, main_weapon does not -> country, main_weapon -> still_used
+TFD: country -> primary_rifle, primary_rifle does not -> country, primary_rifle -> still_used
 */
 
 CREATE TABLE military
@@ -197,6 +197,6 @@ CREATE TABLE flag
 /*
 flag table
 -------------
-TFD: country -> date_flag_created, date_flag_created does not -> country, date_flag_created -> century
-MVD: country, date_flag_created, century_flag_created ->> flag_colors; country, date_flag_created, century_flag_created ->> flag_sizes
+TFD: country -> date_flag_created, date_flag_created does not -> country, date_flag_created -> century_flag_created
+MVD: country, date_flag_created, century_flag_created, cause_of_flag_creation ->> flag_colors; country, date_flag_created, century_flag_created, cause_of_flag_creation ->> flag_sizes
 */
