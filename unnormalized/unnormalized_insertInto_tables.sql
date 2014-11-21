@@ -86,15 +86,15 @@ VALUES ('germany', 183000, 'afghanistan', 3, 'yes', NULL),
 ('england', 550000, 'afghanistan', 4, 'yes', NULL),
 ('brazil', 5, 'mexico', 1, 'no', NULL),
 ('russia', 1000, 'chechnya', 4, 'yes', NULL),
-('china', 1000000, 'africa', 1, 'yes', 2005),
-('australia', 1, 'australia', 1, 'no', 1990),
+('china', 1000000, 'africa', 1, 'yes', '1 feb, 2005'),
+('australia', 1, 'australia', 1, 'no', '1 march 1990'),
 ('mexico', 2, 'drug cartel city', 2, 'no', NULL),
 ('somalia', 1, 'ocian liners', 0, 'yes', NULL);
 
 #insert into government table
 INSERT INTO government (country, type_of, head_leader, head_political_party, name_of_constitution, name_of_legislative_power, do_they_vote)
 VALUES ('germany', 'federal parliamentary republic', 'angela merkel', 'christian democratic union', 'grundgesetz', 'bundestag', TRUE),
-('united states of america', 'democracy', 'obama', 'democrats', 'constitution', 'congress', FALSE),
+('united states of america', 'democracy', 'obama', 'democrats', 'constitution', 'congress', TRUE),
 ('russia', 'dictatorship', 'putin', 'socialists', 'putins laws', 'help us', TRUE),
 ('mexico', 'drug democracy', 'bob', 'drug cartels', 'mexican servesas', 'national libertarians', TRUE),
 ('somalia', 'dictatorship', 'click-clack', 'pirates for freedom', 'guns', 'steal everything', FALSE),
@@ -102,7 +102,7 @@ VALUES ('germany', 'federal parliamentary republic', 'angela merkel', 'christian
 ('brazil', 'maybe not', 'don\'t know', 'soccer', 'futbol', 'fifa', FALSE),
 ('england', 'democracy', 'tony blair', 'social democrats', 'in all fairness', 'parliament', TRUE),
 ('china', 'communism', 'xi', 'communists', 'chinas constitution', 'the people', FALSE),
-('france', 'democracy', 'hmmmm', 'bread smokers', 'wine and cheese', 'forget me not', FALSE);
+('france', 'democracy', 'hmmmm', 'bread smokers', 'wine and cheese', 'forget me not', TRUE);
 
 #insert into food table
 INSERT INTO food (country, popular_food, popular_drink, popular_dessert, popular_alcoholic_beverage, popular_alcoholic_beverage_type, obesity_rate)

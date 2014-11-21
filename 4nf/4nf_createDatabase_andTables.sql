@@ -48,15 +48,14 @@ CREATE TABLE wars
   casualties int,
   main_loser_by_deaths varchar(255) DEFAULT NULL,
   century varchar(255),
-  PRIMARY KEY(war_name),
-  FOREIGN KEY(year_began) REFERENCES year_war_began(year_began)
+  PRIMARY KEY(war_name)
 );
 
 CREATE TABLE year_war_began
 (
   year_began smallint NOT NULL,
-  reason_began text,
-  PRIMARY KEY(year_began)
+  reason_began text NOT NULL,
+  PRIMARY KEY(reason_began)
 );
 
 CREATE TABLE climate
@@ -82,7 +81,6 @@ CREATE TABLE authors
 (
   name varchar(255) NOT NULL,
   city_born_in varchar(255),
-  most_popular_book varchar(255),
   birthday varchar(255),
   death varchar(255) DEFAULT NULL,
   how_died text DEFAULT NULL,
@@ -94,8 +92,10 @@ CREATE TABLE authors
 CREATE TABLE birthplace
 (
   city_born_in varchar(255) NOT NULL,
-  country_born_in varchar(255),
-  PRIMARY KEY(city_born_in)
+  country_born_in varchar(255) NOT NULL,
+  most_popular_book varchar(255) NOT NULL,
+  PRIMARY KEY(most_popular_book),
+  FOREIGN KEY(country_born_in) REFERENCES countries(name)
 );
 
 CREATE TABLE weapons
@@ -199,9 +199,10 @@ CREATE TABLE most_deadly_disease_in_country
 
 CREATE TABLE flag_day
 (
+  cause_of_flag_creation text NOT NULL,
   date_flag_created varchar(255),
   century_flag_created varchar(255),
-  PRIMARY KEY(date_flag_created)
+  PRIMARY KEY(cause_of_flag_creation)
 );
 
 CREATE TABLE flag_colors
@@ -212,8 +213,10 @@ CREATE TABLE flag_colors
   flag_colors varchar(255),
   PRIMARY KEY(cause_of_flag_creation),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(date_flag_created) REFERENCES flag_day(date_flag_created)
+  FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
+
+#Trivial multivalued dependency
 
 CREATE TABLE flag_sizes
 (
@@ -223,6 +226,7 @@ CREATE TABLE flag_sizes
   flag_sizes varchar(255),
   PRIMARY KEY(cause_of_flag_creation),
   FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(date_flag_created) REFERENCES flag_day(date_flag_created)
-  FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_colors(cause_of_flag_creation)
+  FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
+
+#Trivial multvalued dependency
