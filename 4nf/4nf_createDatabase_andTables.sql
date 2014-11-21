@@ -215,8 +215,7 @@ CREATE TABLE flag_colors
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
-
-#Trivial multivalued dependency
+#Trivial multivalued dependency=> cause_of_flag_creation, country, date_flag_created ->> flag_colors
 
 CREATE TABLE flag_sizes
 (
@@ -228,5 +227,4 @@ CREATE TABLE flag_sizes
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
-
-#Trivial multvalued dependency
+#Trivial multvalued dependency=> cause_of_flag_creation, country, date_flag_created ->> flag_sizes
