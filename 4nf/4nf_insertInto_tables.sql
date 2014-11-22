@@ -1,14 +1,4 @@
-INSERT INTO countries (name, main_language, nationality, size_of_population, continent, capitol)
-VALUES ('germany', 'german', 'german', 80620000, 'europe', 'berlin'),
-('france', 'french', 'french', 66030000, 'europe', 'paris'),
-('brazil', 'portuguese', 'brazilian', 200400000, 'south america', 'brazilia'),
-('united states of america', 'english', 'american', 316100000, 'north america', 'washington d.c.'),
-('england', 'english', 'british', 53010000, 'europe', 'london'),
-('mexico', 'spanish', 'mexican', 122300000, 'south armerica', 'mexico city'),
-('russia', 'russian', 'russian', 146000000, 'asia', 'moscow'),
-('australia', 'english', 'austrailian', 23130000, 'australia', 'canberra'),
-('china', 'chinese', 'chinese', 1357000000, 'asia', 'beijing'),
-('somalia', 'arabic', 'somali', 10000000, 'africa', 'mogadishu');
+USE db_project;
 
 INSERT INTO continents (continents, east_west_dichotomy)
 VALUES ('south america', 'west'),
@@ -17,6 +7,26 @@ VALUES ('south america', 'west'),
 ('asia', 'east'),
 ('africa', 'east'),
 ('europe', 'west');
+
+INSERT INTO countries (name, main_language, nationality, size_of_population, continent, capitol)
+VALUES ('germany', 'german', 'german', 80620000, 'europe', 'berlin'),
+('france', 'french', 'french', 66030000, 'europe', 'paris'),
+('brazil', 'portuguese', 'brazilian', 200400000, 'south america', 'brazilia'),
+('united states of america', 'english', 'american', 316100000, 'north america', 'washington d.c.'),
+('england', 'english', 'british', 53010000, 'europe', 'london'),
+('mexico', 'spanish', 'mexican', 122300000, 'south america', 'mexico city'),
+('russia', 'russian', 'russian', 146000000, 'asia', 'moscow'),
+('australia', 'english', 'austrailian', 23130000, 'australia', 'canberra'),
+('china', 'chinese', 'chinese', 1357000000, 'asia', 'beijing'),
+('somalia', 'arabic', 'somali', 10000000, 'africa', 'mogadishu');
+
+INSERT INTO religions (main_religion, religious_leader)
+VALUES ('christianity', 'father'),
+('catholicism', 'priest'),
+('protestant', 'pastor'),
+('orthodox christianity', 'otets'),
+('confusianism', 'scholar-official'),
+('islam', 'imam');
 
 INSERT INTO population_characteristics (country, main_religion, average_income, unemployment_rate, mortality_rate, fertility_rate)
 VALUES ('germany', 'christianity', 23938, 5.1, 3, 1.38),
@@ -30,13 +40,17 @@ VALUES ('germany', 'christianity', 23938, 5.1, 3, 1.38),
 ('china', 'confusianism', 14500, 15.4, 20, 21),
 ('somalia', 'islam', 5000, 40, 50, 15);
 
-INSERT INTO religions (main_religion, religious_leader)
-VALUES ('christianity', 'father'),
-('catholicism', 'priest'),
-('protestant', 'pastor'),
-('orthodox christianity', 'otets'),
-('confusianism', 'scholar-official'),
-('islam', 'imam');
+INSERT INTO year_war_began (year_began, reason_began)
+VALUES (1914, 'assasination of Archduke'),
+(1939, 'nazi blitzkrieg'),
+(1860, 'unrest between states'),
+(1776, 'taxation without representation'),
+(1980, 'mujahideen'),
+(1960, 'communism'),
+(2003, 'saddam hussein'),
+(1898, 'border protection'),
+(10000, 'destroy islmaic extremists'),
+(1900, 'idiocy');
 
 INSERT INTO wars (war_name, year_began, continent, casualties, main_loser_by_deaths, century)
 VALUES ('ww1', 1914, 'europe', 37000000, 'germany', '20th'),
@@ -50,17 +64,15 @@ VALUES ('ww1', 1914, 'europe', 37000000, 'germany', '20th'),
 ('gwot', 1, 'everywhere', 100000, 'islam', '21st'),
 ('congress', 1900, 'north america', 300000000, 'united states of america', '21st');
 
-INSERT INTO year_war_began (year_began, reason_began)
-VALUES (1914, 'assasination of Archduke'),
-(1939, 'nazi blitzkrieg'),
-(1860, 'unrest between states'),
-(1776, 'taxation without representation'),
-(1980, 'mujahideen'),
-(1960, 'communism'),
-(2003, 'saddam hussein'),
-(1898, 'border protection'),
-(10000, 'destroy islmaic extremists'),
-(1900, 'idiocy');
+INSERT INTO world_biomes (biome, vegetation)
+VALUES ('warm temperate', 'temperate evergreen forest'),
+('everything', 'all'),
+('continental', 'grasslands'),
+('subtropical', 'desert'),
+('equatorial', 'forest'),
+('tropical', 'highlands'),
+('polar', 'frozen soil'),
+('boreal', 'needle-leaved forest');
 
 INSERT INTO climate (country, biome, num_seasons, min_temp, max_temp, avg_precipitation)
 VALUES ('germany', 'warm temperate', 4, -50, 104, 700),
@@ -74,32 +86,9 @@ VALUES ('germany', 'warm temperate', 4, -50, 104, 700),
 ('brazil', 'polar', 1, -100, 0, 5),
 ('russia', 'boreal', 10, 6, 7, 20);
 
-INSERT INTO world_biomes (biome, vegetation)
-VALUES ('warm temperate', 'temperate evergreen forest'),
-('everything', 'all'),
-('boreal', 'evergreen'),
-('continental', 'grasslands'),
-('subtropical', 'desert'),
-('equatorial', 'forest'),
-('tropical', 'highlands'),
-('polar', 'frozen soil'),
-('boreal', 'needle-leaved forest');
-
-INSERT INTO authors (name, city_born_in, birthday, how_died)
-VALUES ('fritz stern', 'wroclaw', 'our century', 'february 2, 1926', NULL),
-('jon malcom', 'london', 'dude', 'july 10, 1975', 'stabbed'),
-('bilbo baggins', 'leningrad', 'good to be here', 'december 1, 1988', 'hanged'),
-('jon goete', 'normandy', 'beaches', 'august 10, 1000', 'fell'),
-('pierce', 'san palo', 'slums', 'september 11, 2001', 'airplane crash'),
-('kiet', 'hong kong', 'umbrella wars', 'march 11, 2012', NULL),
-('tim allen', 'sidney', 'dingos forever', 'february 2, 1969', 'eaten alive'),
-('bob', 'salinas', 'what am i doing here', 'july 11, 1900', NULL),
-('somali pirate', 'oceania', 'damn you navy seals', 'beginning of time', 'sniper bullet to dome'),
-('jose', 'mexico city', 'i hate the drug cartels', '1969', 'border patrol ran him over');
-
 INSERT INTO birthplace (city_born_in, country_born_in, most_popular_book)
 VALUES ('wroclaw', 'germany', 'our century'),
-('london', 'england', 'dude')
+('london', 'england', 'dude'),
 ('leningrad', 'russia', 'good to be here'),
 ('normandy', 'france', 'beaches'),
 ('san palo', 'brazil', 'slums'),
@@ -109,7 +98,19 @@ VALUES ('wroclaw', 'germany', 'our century'),
 ('oceania', 'somalia', 'damn you navy seals'),
 ('mexico city', 'mexico', 'i hate the drug cartels');
 
-#insert into weapons table
+INSERT INTO authors (name, city_born_in, birthday, how_died)
+VALUES ('fritz stern', 'wroclaw', 'february 2, 1926', NULL),
+('jon malcom', 'london', 'july 10, 1975', 'stabbed'),
+('bilbo baggins', 'leningrad', 'december 1, 1988', 'hanged'),
+('jon goete', 'normandy', 'august 10, 1000', 'fell'),
+('pierce', 'san palo', 'september 11, 2001', 'airplane crash'),
+('kiet', 'hong kong', 'march 11, 2012', NULL),
+('tim allen', 'sidney', 'february 2, 1969', 'eaten alive'),
+('bob', 'salinas', 'july 11, 1900', NULL),
+('somali pirate', 'damn you navy seals', 'beginning of time', 'sniper bullet to dome'),
+('jose', 'mexico city', '1969', 'border patrol ran him over');
+
+
 INSERT INTO weapons (primary_rifle, caliber, country, war_first_used, designer)
 VALUES ('gewehr 88', '7.92x57mm', 'germany', 'ww1', 'german rifle commission'),
 ('tech-nine', '45acp', 'united states of america', 'civil war', 'techanina'),
@@ -134,6 +135,15 @@ VALUES ('gewehr 88', FALSE),
 ('uzi', FALSE),
 ('pen', TRUE);
 
+INSERT INTO recent_war (most_recent_war, most_recent_war_end)
+VALUES ('afghanistan', NULL),
+('mexico', NULL),
+('chechnya', NULL),
+('africa', '1 feb, 2005'),
+('australia', '1 march, 1990'),
+('drug cartel city', NULL),
+('ocean liners', NULL);
+
 INSERT INTO military (country, size_of, most_recent_war, num_branches, mandatory_service)
 VALUES ('germany', 183000, 'afghanistan', 3, 'yes'),
 ('united states of america', 1000000, 'afghanistan', 4, 'no'),
@@ -144,16 +154,16 @@ VALUES ('germany', 183000, 'afghanistan', 3, 'yes'),
 ('china', 1000000, 'africa', 1, 'yes'),
 ('australia', 1, 'australia', 1, 'no'),
 ('mexico', 2, 'drug cartel city', 2, 'no'),
-('somalia', 1, 'ocian liners', 0, 'yes');
+('somalia', 1, 'ocean liners', 0, 'yes');
 
-INSERT INTO recent_war (most_recent_war, most_recent_war_end)
-VALUES ('afghanistan', NULL),
-('mexico', NULL),
-('chechnya', NULL),
-('africa', '1 feb, 2005'),
-('australia', '1 march, 1990'),
-('drug cartel city', NULL),
-('ocean liners', NULL);
+INSERT INTO type_of_government
+VALUES ('federal parliamentary republic', TRUE),
+('democracy', TRUE),
+('dictatorship', FALSE),
+('drug democracy', TRUE),
+('grill on', TRUE),
+('maybe not', FALSE),
+('communism', FALSE);
 
 INSERT INTO government (country, type_of, head_leader, head_political_party, name_of_constitution, name_of_legislative_power)
 VALUES ('germany', 'federal parliamentary republic', 'angela merkel', 'christian democratic union', 'grundgesetz', 'bundestag'),
@@ -167,14 +177,17 @@ VALUES ('germany', 'federal parliamentary republic', 'angela merkel', 'christian
 ('china', 'communism', 'xi', 'communists', 'chinas constitution', 'the people'),
 ('france', 'democracy', 'hmmmm', 'bread smokers', 'wine and cheese', 'forget me not');
 
-INSERT INTO type_of_government
-VALUES ('federal parliamentary republic', TRUE),
-('democracy', TRUE),
-('dictatorship', FALSE),
-('drug democracy', TRUE),
-('grill on', TRUE),
-('maybe not', FALSE),
-('communism', FALSE);
+INSERT INTO booze (popular_alcoholic_beverage, popular_alcoholic_beverage_type)
+VALUES ('jagermeister', 'liquer'),
+('wine', 'wine'),
+('vodka', 'wodka'),
+('broken glass', 'beer'),
+('coors light', 'beer'),
+('pipe', 'whiskey'),
+('servesa', 'dos equis'),
+('rice', 'rice'),
+('admiral nelsons', 'rum'),
+('manchester', 'gin');
 
 INSERT INTO food (country, popular_food, popular_drink, popular_dessert, popular_alcoholic_beverage, obesity_rate)
 VALUES ('germany', 'aachener printen', 'kaffe', 'black forest cake', 'jagermeister', '25%'),
@@ -188,31 +201,7 @@ VALUES ('germany', 'aachener printen', 'kaffe', 'black forest cake', 'jagermeist
 ('australia', 'dingos', 'kangaroo', 'shrimp', 'admiral nelsons', '6%'),
 ('england', 'fish and chips', 'pub brew', 'murder', 'manchester', '76%');
 
-INSERT INTO booze (popular_alcoholic_beverage, popular_alcoholic_beverage_type)
-VALUES ('jagermeister', 'liquer'),
-('wine', 'wine'),
-('vodka', 'wodka'),
-('broken glass', 'beer'),
-('coors light', 'beer'),
-('pipe', 'whiskey'),
-('servesa', 'dos equis'),
-('rice', 'rice'),
-('admiral nelsons', 'rum'),
-('manchester', 'gin');
-
-INSERT INTO disease (country, main_disease, life_expectancy_males, num_deaths_from_main_disease, num_smokers, num_people_with_hiv)
-VALUES ('germany', 'coronary heart disease', 78, 155761, '30%', 53000),
-('france', 'cheese disease', 20, 10, '50%', 1),
-('russia', 'snow cold', 5, 25, '60%', 100),
-('brazil', 'the jungle', 67, 500, '100%', 5),
-('united states of america', 'obesity', 77, 50000, '40%', 25000),
-('somalia', 'starvation', 40, 45, '10%', 8),
-('mexico', 'beheading', 30, 32, '40%', 66),
-('china', 'sars', 300, 3500, '30%', 678),
-('australia', 'dingo attack', 98, 987, '20%', 567),
-('england', 'mi5', 56, 76, '10%', 23);
-
-INSERT INTO most_deadly_diseas_in_country (main_disease, main_disease_typ)
+INSERT INTO most_deadly_disease_in_country (main_disease, main_disease_type)
 VALUES ('coronary heart disease', 'lifestyle disease'),
 ('cheese disease', 'sitting too much'),
 ('snow cold', 'the snow'),
@@ -224,15 +213,27 @@ VALUES ('coronary heart disease', 'lifestyle disease'),
 ('dingo attack', 'wild dog disease'),
 ('mi5', 'spying');
 
+INSERT INTO diseases (country, main_disease, life_expectancy_males, num_deaths_from_main_disease, num_smokers, num_people_with_hiv)
+VALUES ('germany', 'coronary heart disease', 78, 155761, '30%', 53000),
+('france', 'cheese disease', 20, 10, '50%', 1),
+('russia', 'snow cold', 5, 25, '60%', 100),
+('brazil', 'the jungle', 67, 500, '100%', 5),
+('united states of america', 'obesity', 77, 50000, '40%', 25000),
+('somalia', 'starvation', 40, 45, '10%', 8),
+('mexico', 'beheading', 30, 32, '40%', 66),
+('china', 'sars', 300, 3500, '30%', 678),
+('australia', 'dingo attack', 98, 987, '20%', 567),
+('england', 'mi5', 56, 76, '10%', 23);
+
 INSERT INTO flag_day (cause_of_flag_creation, date_flag_created, century_flag_created)
-VALUES ('fall of berlin wall', '1990', '20th'),
+VALUES ('fall of berlin wall', '1990', '20th');
 
 INSERT INTO flag_colors (cause_of_flag_creation, country, date_flag_created, flag_colors)
-VALUES ('fall of berlin wall', 'germany', '1990', 'black')
-VALUES ('fall of berlin wall', 'germany', '1990', 'yellow')
-VALUES ('fall of berlin wall', 'germany', '1990', 'red')
+VALUES ('fall of berlin wall', 'germany', '1990', 'black'),
+('fall of berlin wall', 'germany', '1990', 'yellow'),
+('fall of berlin wall', 'germany', '1990', 'red');
 
 INSERT INTO flag_sizes (cause_of_flag_creation, country, date_flag_created, flag_sizes)
 VALUES ('fall of berlin wall', 'germany', '1990', '5ft'),
-VALUES ('fall of berlin wall', 'germany', '1990', '10ft'),
-VALUES ('fall of berlin wall', 'germany', '1990', '15ft'),
+('fall of berlin wall', 'germany', '1990', '10ft'),
+('fall of berlin wall', 'germany', '1990', '15ft');

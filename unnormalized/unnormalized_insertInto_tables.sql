@@ -43,7 +43,7 @@ VALUES ('ww1', 1914, 'europe', 37000000, 'assasination of Archduke', 'germany', 
 INSERT INTO climate (country, biome, num_seasons, min_temp, max_temp, avg_precipitation, vegetation)
 VALUES ('germany', 'warm temperate', 4, -50, 104, 700, 'temperate evergreen forest'),
 ('united states of america', 'everything', 4, -59, 110, 1000, 'all'),
-('china', 'boreal', 4, -60, 90, 500, 'evergreen'),
+('china', 'boreal', 4, -60, 90, 500, 'needle-leaved forest'),
 ('france', 'continental', 3, -5, 60, 213, 'grasslands'),
 ('somalia', 'subtropical', 1, 40, 120, 100, 'desert'),
 ('australia', 'subtropical', 2, 50, 100, 1500, 'desert'),

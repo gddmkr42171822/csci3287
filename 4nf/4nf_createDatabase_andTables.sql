@@ -1,6 +1,13 @@
 CREATE DATABASE db_project;
 USE db_project;
 
+CREATE TABLE continents
+(
+  continents varchar(255) NOT NULL,
+  east_west_dichotomy varchar(255),
+  PRIMARY KEY(continents)
+);
+
 CREATE TABLE countries
 (
   name varchar(255) NOT NULL,
@@ -13,11 +20,11 @@ CREATE TABLE countries
   FOREIGN KEY(continent) REFERENCES continents(continents)
 );
 
-CREATE TABLE continents
+CREATE TABLE religions
 (
-  continents varchar(255) NOT NULL,
-  east_west_dichotomy varchar(255),
-  PRIMARY KEY(continents)
+  main_religion varchar(255),
+  religious_leader varchar(255),
+  PRIMARY KEY(main_religion)
 );
 
 CREATE TABLE population_characteristics
@@ -31,13 +38,6 @@ CREATE TABLE population_characteristics
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(main_religion) REFERENCES religions(main_religion)
-);
-
-CREATE TABLE religions
-(
-  main_religion varchar(255),
-  religious_leader varchar(255),
-  PRIMARY KEY(main_religion)
 );
 
 CREATE TABLE wars
@@ -54,7 +54,7 @@ CREATE TABLE wars
 CREATE TABLE year_war_began
 (
   year_began smallint NOT NULL,
-  reason_began text NOT NULL,
+  reason_began varchar(255) NOT NULL,
   PRIMARY KEY(reason_began)
 );
 
@@ -77,18 +77,6 @@ CREATE TABLE world_biomes
   PRIMARY KEY(biome)
 );
 
-CREATE TABLE authors
-(
-  name varchar(255) NOT NULL,
-  city_born_in varchar(255),
-  birthday varchar(255),
-  death varchar(255) DEFAULT NULL,
-  how_died text DEFAULT NULL,
-  PRIMARY KEY(name),
-  FOREIGN KEY(country_born_in) REFERENCES countries(name),
-  FOREIGN KEY(city_born_in) REFERENCES birthplace(city_born_in)
-);
-
 CREATE TABLE birthplace
 (
   city_born_in varchar(255) NOT NULL,
@@ -96,6 +84,16 @@ CREATE TABLE birthplace
   most_popular_book varchar(255) NOT NULL,
   PRIMARY KEY(most_popular_book),
   FOREIGN KEY(country_born_in) REFERENCES countries(name)
+);
+
+CREATE TABLE authors
+(
+  name varchar(255) NOT NULL,
+  city_born_in varchar(255),
+  birthday varchar(255),
+  death varchar(255) DEFAULT NULL,
+  how_died text DEFAULT NULL,
+  PRIMARY KEY(name)
 );
 
 CREATE TABLE weapons
@@ -107,8 +105,7 @@ CREATE TABLE weapons
   designer varchar(255),
   PRIMARY KEY(primary_rifle),
   FOREIGN KEY(war_first_used) REFERENCES wars(war_name),
-  FOREIGN KEY(country) REFERENCES countries(name),
-  FOREIGN KEY(primary_rifle) REFERENCES gats(primary_rifle)
+  FOREIGN KEY(country) REFERENCES countries(name)
 );
 
 CREATE TABLE gats
@@ -116,7 +113,14 @@ CREATE TABLE gats
   primary_rifle varchar(255),
   still_used boolean,
   PRIMARY KEY(primary_rifle),
-  FOREIGN KEY(primary rifle) REFERENCES weapons(primary_rifle)
+  FOREIGN KEY(primary_rifle) REFERENCES weapons(primary_rifle)
+);
+
+CREATE TABLE recent_war
+(
+  most_recent_war varchar(255) NOT NULL,
+  most_recent_war_end varchar(255),
+  PRIMARY KEY(most_recent_war)
 );
 
 CREATE TABLE military
@@ -129,13 +133,6 @@ CREATE TABLE military
   PRIMARY KEY(country),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(most_recent_war) REFERENCES recent_war(most_recent_war)
-);
-
-CREATE TABLE recent_war
-(
-  most_recent_war varchar(255) NOT NULL,
-  most_recent_war_end varchar(255),
-  PRIMARY KEY(most_recent_war)
 );
 
 CREATE TABLE government
@@ -157,6 +154,13 @@ CREATE TABLE type_of_government
   PRIMARY KEY(type_of)
 );
 
+CREATE TABLE booze
+(
+  popular_alcoholic_beverage varchar(255),
+  popular_alcoholic_beverage_type varchar(255),
+  PRIMARY KEY(popular_alcoholic_beverage)
+);
+
 CREATE TABLE food
 (
   country varchar(255) NOT NULL,
@@ -170,14 +174,15 @@ CREATE TABLE food
   FOREIGN KEY(popular_alcoholic_beverage) REFERENCES booze(popular_alcoholic_beverage)
 );
 
-CREATE TABLE booze
+CREATE TABLE most_deadly_disease_in_country
 (
-  popular_alcoholic_beverage varchar(255),
-  popular_alcoholic_beverage_type varchar(255),
-  PRIMARY KEY(popular_alcoholic_beverage)
+  main_disease varchar(255) NOT NULL,
+  main_disease_type varchar(255),
+  PRIMARY KEY(main_disease)
 );
 
-CREATE TABLE disease
+
+CREATE TABLE diseases
 (
   country varchar(255) NOT NULL,
   main_disease varchar(255),
@@ -186,20 +191,13 @@ CREATE TABLE disease
   num_smokers varchar(255),
   num_people_with_hiv int,
   PRIMARY KEY (country),
-  FOREIGN KEY(country) REFERENCES countries(name)
-  FOREIGN KEY(main_disease) REFERENCES most_deadly_diseases(main_disease)
-);
-
-CREATE TABLE most_deadly_disease_in_country
-(
-  main_disease varchar(255) NOT NULL,
-  main_disease_type varchar(255),
-  PRIMARY KEY(main_disease)
+  FOREIGN KEY(country) REFERENCES countries(name),
+  FOREIGN KEY(main_disease) REFERENCES most_deadly_disease_in_country(main_disease)
 );
 
 CREATE TABLE flag_day
 (
-  cause_of_flag_creation text NOT NULL,
+  cause_of_flag_creation varchar(255) NOT NULL,
   date_flag_created varchar(255),
   century_flag_created varchar(255),
   PRIMARY KEY(cause_of_flag_creation)
@@ -207,11 +205,11 @@ CREATE TABLE flag_day
 
 CREATE TABLE flag_colors
 (
-  cause_of_flag_creation text NOT NULL,
-  country varchar(255) NOT NULL,
+  cause_of_flag_creation varchar(255) NOT NULL,
+  country varchar(255),
   date_flag_created varchar(255),
   flag_colors varchar(255),
-  PRIMARY KEY(cause_of_flag_creation),
+  PRIMARY KEY(flag_colors),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
@@ -219,11 +217,11 @@ CREATE TABLE flag_colors
 
 CREATE TABLE flag_sizes
 (
-  cause_of_flag_creation text NOT NULL,
-  country varchar(255) NOT NULL,
+  cause_of_flag_creation varchar(255) NOT NULL,
+  country varchar(255),
   date_flag_created varchar(255),
   flag_sizes varchar(255),
-  PRIMARY KEY(cause_of_flag_creation),
+  PRIMARY KEY(flag_sizes),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
