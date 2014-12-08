@@ -16,7 +16,7 @@ CREATE TABLE countries
 /*
 countries table
 -----------------
-TFD: name -> continent, continent does not -> name, continent -> cardinal_reference
+TFD: name -> continent, continent does not -> name, continent -> east_west_dichotomy
 */
 
 CREATE TABLE population_characteristics
