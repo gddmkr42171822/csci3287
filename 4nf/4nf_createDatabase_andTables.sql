@@ -221,7 +221,7 @@ CREATE TABLE flag_sizes
   country varchar(255),
   date_flag_created varchar(255),
   flag_sizes varchar(255),
-  PRIMARY KEY(cause_of_flag_creation, flag_size, country),
+  PRIMARY KEY(cause_of_flag_creation, flag_sizes, country),
   FOREIGN KEY(country) REFERENCES countries(name),
   FOREIGN KEY(cause_of_flag_creation) REFERENCES flag_day(cause_of_flag_creation)
 );
