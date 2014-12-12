@@ -21,6 +21,7 @@ SELECT country, obesity_rate
 FROM food
 WHERE obesity_rate NOT LIKE '0%'
 GROUP BY country;
+
 #A SELECT FROM WHERE GROUP BY HAVING
 SELECT *
 FROM wars
@@ -36,13 +37,22 @@ AND military.most_recent_war = 'afghanistan';
 
 #A SELECT FROM WHERE with two implied joins, a MAX function, an AVG function,
 #and at least two levels of parentheses embedding in the where clause
+SELECT countries.name, diseases.main_disease
+FROM countries, diseases
+WHERE countries.name = diseases.country
+AND diseases.num_deaths_from_main_disease = (
+  SELECT max(diseases.num_deaths_from_main_disease)
+  FROM diseases, most_deadly_disease_in_country
+  WHERE diseases.main_disease = most_deadly_disease_in_country.main_disease
+  HAVING diseases.life_expectancy_males > avg(diseases.life_expectancy_males)
+  );
 
 #A SELECT FROM WHERE with a NOT operator and an IN operator, and a nested query
 SELECT country
 FROM population_characteristics
 WHERE main_religion
-NOT IN
-(SELECT main_religion
+NOT IN (
+  SELECT main_religion
   FROM religions
   WHERE main_religion != 'islam');
 
