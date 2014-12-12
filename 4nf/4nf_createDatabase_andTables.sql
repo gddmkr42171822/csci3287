@@ -91,7 +91,6 @@ CREATE TABLE authors
   name varchar(255) NOT NULL,
   city_born_in varchar(255),
   birthday varchar(255),
-  death varchar(255) DEFAULT NULL,
   how_died text DEFAULT NULL,
   PRIMARY KEY(name)
 );
