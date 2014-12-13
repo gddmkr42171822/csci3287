@@ -1,5 +1,5 @@
-CREATE DATABASE db_project;
-USE db_project;
+#CREATE DATABASE db_project;
+#USE db_project;
 
 CREATE TABLE continents
 (

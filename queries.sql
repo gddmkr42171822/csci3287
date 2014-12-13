@@ -1,3 +1,15 @@
+/*Commands for the command line
+-------------------------------
+1. mysql -u root -p [db name] < [.sql file to import]
+2. show databases;
+3. use db_project;
+4. show tables;
+5. select user from mysql.user;
+6. select * from <table name>;
+7. sudo /Applications/mampstack-5.4.34-0/mysql/support-files/mysql.server start
+
+*/
+
 #A simple SELECT FROM WHERE
 SELECT *
 FROM continents
@@ -68,7 +80,7 @@ WHERE country LIKE 'germany' AND flag_sizes LIKE '5ft';
 
 #A CREATE USER
 CREATE USER 'bob'@'localhost' IDENTIFIED BY 'bob';
-GRANT ALL PRIVILEGES ON * . * TO 'bob'@'localhost';
+#GRANT ALL PRIVILEGES ON * . * TO 'bob'@'localhost';
 
 #A DROP USER
 DROP USER 'bob'@'localhost';
